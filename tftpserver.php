@@ -704,7 +704,9 @@ class TFTPServer {
 
     while(true) {
       $read = array($this->_socket);
-      $r = stream_select($read, $write = null, $excpt = null, 1);
+      $write = null;
+      $excpt = null;
+      $r = stream_select($read, $write, $excpt, 1);
 
       if($r === false) {
 	$this->log_error("server", "select returned false");
