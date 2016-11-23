@@ -168,7 +168,7 @@ $url = "udp://$host:$port";
 
 if(count($_SERVER["argv"]) > 1) {
   $server = new TestTFTPServer($url, true);
-  if(!$server->loop(&$error))
+  if(!$server->loop($error))
     die("$error\n");
 } else {
 
@@ -176,7 +176,7 @@ if(count($_SERVER["argv"]) > 1) {
 
   if($pid == 0) {
     $server = new TestTFTPServer($url);
-    if(!$server->loop(&$error))
+    if(!$server->loop($error))
       die("$error\n");
     exit(0);
   }

@@ -114,5 +114,5 @@ if ($debug) {
 }
 
 $server = new HTTPProxyTFTPServer('udp://'.$_SERVER["argv"][1].':69', $_SERVER["argv"][2], $logger);
-if(!$server->loop(&$error, $user))
+if(!$server->loop($error, $user))
   die("$error\n");

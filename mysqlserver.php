@@ -99,7 +99,7 @@ $config = array("hostname" => "localhost",
 		"database" => "");
 
 $server = new MySQLTFTPServer("udp://0.0.0.0:69", $config);
-if(!$server->loop(&$error, posix_getpwnam("nobody")));
+if(!$server->loop($error, posix_getpwnam("nobody")));
   die("$error\n");
 
 ?>
