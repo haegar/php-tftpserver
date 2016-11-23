@@ -113,6 +113,10 @@ if ($debug) {
   $logger = new Logger_Syslog(LOG_NOTICE);
 }
 
-$server = new HTTPProxyTFTPServer('udp://'.$_SERVER["argv"][1].':69', $_SERVER["argv"][2], $logger);
+$host = $_SERVER["argv"][1];
+if (strstr(":", $host) === false)
+  $host .= ":69";
+
+$server = new HTTPProxyTFTPServer('udp://'.$host, $_SERVER["argv"][2], $logger);
 if(!$server->loop($error, $user))
   die("$error\n");
